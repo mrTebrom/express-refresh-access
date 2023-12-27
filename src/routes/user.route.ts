@@ -1,0 +1,10 @@
+import { Router } from "express";
+import userController from "../controllers/user.controller";
+import authGuard from "../guard/auth.guard";
+const router = Router();
+router.post("/refresh", userController.refresh);
+router.post("/register", userController.registration);
+router.post("/login", userController.login);
+router.post("/logout", userController.logout);
+router.get("/", authGuard, userController.getUsers);
+export default router;
